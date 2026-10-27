@@ -1,16 +1,17 @@
+import sys
+import PySide6
 import socket
 import nicegui
 
 host = ""
 port = 3333
 
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind((host, port))
 
-def help():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind((host, port))
+class main(PySide6.QtWidgets.qWidget):
+    def __init__(self):
+        super().__init__()
 
-    nicegui.ui.label('Testing')
-
-nicegui.app.on_startup(help)
-
-nicegui.ui.run(native=True, port=8005, reload=False)
+        self.hello = "hello"
+        self.button = PySide6.QtWidgets.QPushButton("Click me")
